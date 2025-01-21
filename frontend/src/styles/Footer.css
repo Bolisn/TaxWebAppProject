@@ -1,0 +1,37 @@
+/* Footer Styling */
+.footer {
+    background-color: #000000;
+    color: #f39c12;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+/* Ensure footer stays at the bottom */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%; 
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Make the root container span full height */
+}
+
+/* Styling for the text */
+.footer p {
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        font-size: 0.9rem; /* Slightly smaller font on mobile */
+        padding: 12px 0;
+    }
+}

@@ -1,0 +1,82 @@
+/* General Container Styling */
+.auth-container {
+  background-color: #000000;
+  color: white;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Auth Title */
+.auth-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #f39c12;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 5px 15px rgba(255, 153, 51, 0.4);
+  animation: glow 3s infinite ease-in-out;
+}
+
+/* Description */
+.auth-description {
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 50px;
+  opacity: 0.8;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* Form Container */
+.form-container {
+  background-color: #111111;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+/* Subtle glowing animation */
+@keyframes glow {
+
+  0%,
+  100% {
+    text-shadow: 0 5px 15px rgba(255, 153, 51, 0.4);
+  }
+
+  50% {
+    text-shadow: 0 5px 25px rgba(255, 153, 51, 0.6);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 20px 15px;
+  }
+
+  .auth-title {
+    font-size: 2.5rem;
+  }
+
+  .auth-description {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .form-container {
+    width: 90%; /* Adjust width for mobile */
+    padding: 25px;
+  }
+}

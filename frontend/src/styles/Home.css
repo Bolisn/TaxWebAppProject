@@ -1,0 +1,198 @@
+/* Main Home Page Container */
+.home-container {
+  background-color: #000000;
+  color: white;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  position: relative;
+  gap: 20px; 
+}
+
+/* Home Title */
+.home-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #f39c12;
+  text-shadow: 0 5px 15px rgba(255, 153, 51, 0.4);
+  animation: glow 3s infinite ease-in-out;
+  margin-bottom: 30px;
+}
+
+/* Navigation Button */
+.nav-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-button {
+  background-color: #f39c12;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: #e67e22;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Calculation Form Section */
+.create-calculation-section {
+  background-color: #111111;
+  padding: 50px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: 600px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.create-calculation-section .section-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Form Layout */
+.calculation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-label {
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Input Fields */
+input[type="number"] {
+  background-color: #222222;
+  color: white;
+  border: 1px solid #444444;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 1.1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: #f39c12;
+  box-shadow: 0 0 10px #f39c12;
+}
+
+/* Submit Button Styling */
+.form-button {
+  background-color: #f39c12;
+  color: white;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-button:hover {
+  background-color: #e67e22;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Advice Section */
+.result-section {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #111111;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.result-section ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.result-section li {
+  font-size: 1.2rem;
+  color: #f39c12;
+  opacity: 0;
+  animation: slideIn 0.3s ease forwards;
+}
+
+.result-section li:nth-child(odd) {
+  animation-delay: 0.2s;
+}
+
+.result-section li:nth-child(even) {
+  animation-delay: 0.4s;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 20px 15px;
+  }
+
+  .create-calculation-section {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .form-label,
+  .form-input,
+  .form-button {
+    font-size: 1rem;
+  }
+
+  .form-button {
+    width: 100%;
+  }
+}
