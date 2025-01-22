@@ -1,6 +1,6 @@
 # TaxWebAppProject
 
-
+------------------------------------------------------------------------------------------------------
 I used JavaScript and React + Vite for the frontend development 
 Inside the TaxWebAppProject file, i followed the steps below to activate the enviroment
 and install the required libraries (you should also in order to activate it)
@@ -15,6 +15,7 @@ npm install
 npm install axios, react-router-dom, jwt-decode
 npm run dev 
 
+---------------------------------------------------------------------------------------------------------
 I used Python and Django for the Backend development
 Inside the TaxWebAppProject file, I followed the steps below to activate the enviroment and 
 start the server
@@ -31,7 +32,7 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 
-
+---------------------------------------------------------------------------------------------------------------
 Frontend-Backend integration
 in order to run the frontend and backend at this stage of the project, we have to split our terminal
 and manually start each server, and check the logs of each one seperatly in order to debug and fix the errors
@@ -41,7 +42,17 @@ make sure the path you post from your Frontend exists in the Backend
 first we start with the authorization, with the access tokens and refresh tokens
 then i set the post methods from Frontend to Backend
 
+-----------------------------------------------------------------------------------------------------------------
+For the OpenAI API Key, and the integration of an AI Model in one API i followed these steps:
+First integrate the OpenAI API Key in the system (i created a new .env file and stored it there for safety) 
+and using dotenv i define it in the system file
+Then i created Taxapp/AiAgent.py and in there i imported the key, created the prompt and define the AI Model
+that i will use. 
+Then i import this in my views.py in order to "create" the API and route it for post and get requests 
+Finally, i created a AiAgent.jsx component in the frontend, to handle the post and get requests in the frontend (integration)
 
+
+------------------------------------------------------------------------------------------------------------
 frontend explanations:
 
 Axios is a JavaScript library that simplifies making HTTP requests (like GET, POST, PUT, DELETE) from the browser or Node.js to interact with APIs.

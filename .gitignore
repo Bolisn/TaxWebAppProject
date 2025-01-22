@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-AiAgent.py
+
 env
 .env
 *.sqlite3

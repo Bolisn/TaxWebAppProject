@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv
+import os
 
+load_dotenv()                                   #integrate Key to system from a .env file
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')  
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

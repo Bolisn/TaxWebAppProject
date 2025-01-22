@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react" ;
 import api from "../api";
 
 const AiAgent = ({ onCalculationComplete }) => {
@@ -13,7 +13,7 @@ const AiAgent = ({ onCalculationComplete }) => {
             return;
         }
 
-        if (incomeValue < 0 || expensesValue < 0) {      // Ensure income and expenses are positive
+        if (incomeValue < 0 || expensesValue < 0) {      // Ensuring income and expenses are positive numbers
             alert("Income and expenses must be positive values."); 
             return;
         }
@@ -42,8 +42,9 @@ const AiAgent = ({ onCalculationComplete }) => {
     };
 
     return {
-        createCalculation, // Expose function to trigger tax calculation
+        createCalculation, 
         isLoading,         // Expose loading state for UI feedback
+    
     };
 };
 

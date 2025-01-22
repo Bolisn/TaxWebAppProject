@@ -4,6 +4,12 @@ from .serializers import UserSerializer
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.http import JsonResponse
+from .AiAgent import generate_tips
+import openai
+import os
+
+openai.api_key = os.getenv('OPENAI_API_KEY')        # Load OpenAI API key from environment variables
 
 class CreateUserView(generics.CreateAPIView):       
     queryset = User.objects.all()
@@ -23,9 +29,11 @@ class CalculateTaxesView(APIView):
             income = float(income)                                      #in order to avoid errors in calculations, even if we check it in the frontend
             expenses = float(expenses)
             calculated_tax = calculate_greek_tax(income, expenses)      # Calculate tax
+            tips = generate_tips(calculated_tax, income, expenses)      # Generate tips from tax
 
             return Response({
                 "calculated_tax": calculated_tax,
+                "tips": tips
             })
 
         except ValueError:
@@ -57,4 +65,6 @@ def calculate_greek_tax(income, expenses):
 
     return round(total_tax, 2)
 
-
+def generate_tips_from_tax(tax, income, expenses):
+    tips = generate_tips(tax, income, expenses) 
+    return JsonResponse({'tips': tips})         # Return the tips as a JSON response
