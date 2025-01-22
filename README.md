@@ -1,5 +1,13 @@
 # TaxWebAppProject
 
+Taxculate is a web application that based on the users input, calculates his taxes and gives him 
+personalised advice on ways to optimise his taxes or investments, all with the help of our 
+specially created AI Agent. The styles and colors are inspired by Apple's Calculator App, retaining 
+a minimal structure. 
+
+Below i list the steps i followed to create this App. 
+Fore more information on the frontend, goto line 94 and backend goto line 140
+
 ------------------------------------------------------------------------------------------------------
 
 I used JavaScript and React + Vite for the frontend development 
@@ -37,12 +45,12 @@ python manage.py runserver
 ---------------------------------------------------------------------------------------------------------------
 
 Frontend-Backend integration
-in order to run the frontend and backend at this stage of the project, we have to split our terminal
+in order to run the frontend and backend at this stage of the project, i have to split our terminal
 and manually start each server, and check the logs of each one seperatly in order to debug and fix the errors
 Set correctly the api.js (axios instance) 
 set the VITE_API_URL in the .env of the frontend with the url of the Backend server 
 make sure the path you post from your Frontend exists in the Backend 
-first we start with the authorization, with the access tokens and refresh tokens
+first i start with the authorization, with the access tokens and refresh tokens
 then i set the post methods from Frontend to Backend
 
 -----------------------------------------------------------------------------------------------------------------
@@ -60,10 +68,12 @@ Finally, i created a AiAgent.jsx component in the frontend, to handle the post a
 
 To upload my project to Docker, i created 2 Dockerfiles (one for the backend and one for the frontend),
 In each one i defined the requirements to run the selected framework, the ports and the commands.
-Then i created a docker-compose.yaml file in the root of the TaxWebAppProject, to  to define, configure, and manage the containers as part of a single application.
+Then i created a docker-compose.yaml file in the root of the TaxWebAppProject, to define, configure, and manage the containers as part of a single application.
 Since i decided to work with the sqlite3 database (integrated by default to django) there is no need to connect a new 
 database , i just mount it to the docker-compose.yaml. Also, i mounted the code from frontend and backend in order to 
-hot-reload any changes i need to make in development.
+hot-reload any changes i need to make in development. 
+
+NOTE: It is not optimal (and useful) to integrate and sent the database in this way. 
 
 To run the application now, i used the commands:
 docker-compose build
@@ -73,6 +83,13 @@ or on Docker Desktop start it manually
 
 ---------------------------------------------------------------------------------------------------------------------------
 
+At last, i created a CI/CD Pipeline with Github Actions. I created a test case for the backend that i test in the pipeline,
+in Taxapp/tests.py . Except for testing, this pipeline checks the code from the repository and sets the python version and Virtual Enviroment (venv). In the deployment aspect, it logs into my Docker Hub (i added my credentials as a secret),
+builds and pushes the backend and frontend Docker Images and deployes the app with the file docker-compose.prod.yml 
+(production file, i also left the development one (compose-docker.yaml) for future developments).
+
+
+-------------------------------------------------------------------------------------------------------------------------
 
 frontend explanations:
 
@@ -118,6 +135,7 @@ in public folder, a store my .svg file for the favicon i used
 
 the files i dont mention are autocreated files from the framework
 
+-----------------------------------------------------------------------------------------------------------------
 
 Backend explanations:
 
@@ -134,6 +152,7 @@ in the Taxapp file, I created all of our APIs. The fisrt 2 files i created them 
     -urls.py: defines the URL path and routes HTTP requests to APIs or views (only for the Taxapp, i integrate 
                 it in the urls.py file above)
     -views.py: contains the logic for handling HTTP requests (API structure and functions)
+    -tests.py: contains a test i created for the validation of the OpenAI API Key
 
 The rest of the files that exists in the backend are created automatically and i did not change them at all.
 

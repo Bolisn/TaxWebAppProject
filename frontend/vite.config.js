@@ -7,8 +7,8 @@ export default ({ mode }) => {
   return defineConfig({
     plugins: [react()],
     server: {
-      host: false, // Ensure the server is accessible from outside the container
-      port: 5174, // Default Vite port (inside the container)
+      host: true, // Ensure the server is accessible from outside the container
+      port: 5174, 
       watch: {
         usePolling: true, // Necessary for Docker to detect file changes
       },
