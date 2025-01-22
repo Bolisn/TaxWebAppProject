@@ -29,7 +29,11 @@ function Form({ route, method }) {
                 navigate("/login"); // If the form is for registration, redirect to the login page
             }
         } catch (error) {
-            setError("Wrong username or password. Please try again!"); 
+            if (method === "login") {
+                setError("Wrong username or password. Please try again!"); 
+            } else {
+                setError("Username already taken. Try another one!");
+            }
         } finally {
             setLoading(false); // Hide loading indicator after processing
         }

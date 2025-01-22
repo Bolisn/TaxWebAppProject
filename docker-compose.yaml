@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend  # Path to the backend folder
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"  # Expose backend on port 8000
+    volumes:
+      - ./backend:/app  # Mount backend code for hot-reloading in dev
+      - ./backend/db.sqlite3:/app/db.sqlite3  # Mount SQLite database
+    depends_on:
+      - frontend
+    environment:
+      - DJANGO_DB_URL=sqlite:///app/db.sqlite3  # Pass any necessary environment variables, if needed
+
+  frontend:
+    build:
+      context: ./frontend  # Path to the frontend folder
+      dockerfile: Dockerfile
+    command: npm run dev
+    ports:
+      - "5174:5174"  # Expose frontend on port 5174
+    volumes:
+      - ./frontend:/app  # Mount frontend code for hot-reloading in dev
+      - /app/node_modules  # Prevent overwriting node_modules
+    environment:
+      - VITE_BACKEND_URL=http://backend:8000  # Frontend needs to connect to the backend container

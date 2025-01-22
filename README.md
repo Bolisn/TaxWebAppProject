@@ -1,6 +1,7 @@
 # TaxWebAppProject
 
 ------------------------------------------------------------------------------------------------------
+
 I used JavaScript and React + Vite for the frontend development 
 Inside the TaxWebAppProject file, i followed the steps below to activate the enviroment
 and install the required libraries (you should also in order to activate it)
@@ -16,6 +17,7 @@ npm install axios, react-router-dom, jwt-decode
 npm run dev 
 
 ---------------------------------------------------------------------------------------------------------
+
 I used Python and Django for the Backend development
 Inside the TaxWebAppProject file, I followed the steps below to activate the enviroment and 
 start the server
@@ -33,6 +35,7 @@ python manage.py migrate
 python manage.py runserver
 
 ---------------------------------------------------------------------------------------------------------------
+
 Frontend-Backend integration
 in order to run the frontend and backend at this stage of the project, we have to split our terminal
 and manually start each server, and check the logs of each one seperatly in order to debug and fix the errors
@@ -43,6 +46,7 @@ first we start with the authorization, with the access tokens and refresh tokens
 then i set the post methods from Frontend to Backend
 
 -----------------------------------------------------------------------------------------------------------------
+
 For the OpenAI API Key, and the integration of an AI Model in one API i followed these steps:
 First integrate the OpenAI API Key in the system (i created a new .env file and stored it there for safety) 
 and using dotenv i define it in the system file
@@ -53,6 +57,23 @@ Finally, i created a AiAgent.jsx component in the frontend, to handle the post a
 
 
 ------------------------------------------------------------------------------------------------------------
+
+To upload my project to Docker, i created 2 Dockerfiles (one for the backend and one for the frontend),
+In each one i defined the requirements to run the selected framework, the ports and the commands.
+Then i created a docker-compose.yaml file in the root of the TaxWebAppProject, to  to define, configure, and manage the containers as part of a single application.
+Since i decided to work with the sqlite3 database (integrated by default to django) there is no need to connect a new 
+database , i just mount it to the docker-compose.yaml. Also, i mounted the code from frontend and backend in order to 
+hot-reload any changes i need to make in development.
+
+To run the application now, i used the commands:
+docker-compose build
+docker-compose up
+
+or on Docker Desktop start it manually 
+
+---------------------------------------------------------------------------------------------------------------------------
+
+
 frontend explanations:
 
 Axios is a JavaScript library that simplifies making HTTP requests (like GET, POST, PUT, DELETE) from the browser or Node.js to interact with APIs.

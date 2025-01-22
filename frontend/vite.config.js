@@ -1,13 +1,17 @@
-import { defineConfig, loadEnv } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig, loadEnv } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default ({ mode }) => {
-  process.env = {...process.env, ...loadEnv(mode, process.cwd())};
-
-  // import.meta.env.VITE_NAME available here with: process.env.VITE_NAME
-  // import.meta.env.VITE_PORT available here with: process.env.VITE_PORT
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   return defineConfig({
-      plugins: [react()],
+    plugins: [react()],
+    server: {
+      host: false, // Ensure the server is accessible from outside the container
+      port: 5174, // Default Vite port (inside the container)
+      watch: {
+        usePolling: true, // Necessary for Docker to detect file changes
+      },
+    },
   });
-}
+};

@@ -8,7 +8,7 @@ function Register() {
         <div className="auth-container">
             <h1 className="auth-title">Taxculator</h1>
             <p className="auth-description">
-                Welcome to Taxculator app! Please register to start calculating your taxes and managing your finances.
+                Welcome to Taxculator! Please register to start calculating your taxes and managing your finances.
             </p>
             <Form route="/api/user/register/" method="register" />
             <Footer />
