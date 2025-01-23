@@ -45,7 +45,7 @@ python manage.py runserver
 ---------------------------------------------------------------------------------------------------------------
 
 Frontend-Backend integration
-in order to run the frontend and backend at this stage of the project, i have to split our terminal
+in order to run the frontend and backend at this stage of the project, i have to split the terminal
 and manually start each server, and check the logs of each one seperatly in order to debug and fix the errors
 Set correctly the api.js (axios instance) 
 set the VITE_API_URL in the .env of the frontend with the url of the Backend server 
@@ -84,10 +84,9 @@ or on Docker Desktop start it manually
 ---------------------------------------------------------------------------------------------------------------------------
 
 At last, i created a CI/CD Pipeline with Github Actions. I created a test case for the backend that i test in the pipeline,
-in Taxapp/tests.py . Except for testing, this pipeline checks the code from the repository and sets the python version and Virtual Enviroment (venv). In the deployment aspect, it logs into my Docker Hub (i added my credentials as a secret),
-builds and pushes the backend and frontend Docker Images and deployes the app with the file docker-compose.prod.yml 
-(production file, i also left the development one (compose-docker.yaml) for future developments).
+in Taxapp/tests.py . Except for testing, this pipeline checks the code from the repository and sets the python version and Virtual Enviroment (venv). In the deployment aspect, it logs into my Docker Hub (i added my credentials as a secret in my repository in GitHub from the add a secret section), builds and pushes the backend and frontend Docker Images and deployes the app with the file docker-compose.prod.yml (production file, i also left the development one (compose-docker.yaml) for future developments).
 
+Make sure to put the file( mine is ci-cd.yml) in the path .github\workflows\ or else the GitHub won't recognise the file 
 
 -------------------------------------------------------------------------------------------------------------------------
 
