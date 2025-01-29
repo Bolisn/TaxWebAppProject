@@ -6,7 +6,7 @@ specially created AI Agent. The styles and colors are inspired by Apple's Calcul
 a minimal structure. 
 
 Below i list the steps i followed to create this App. 
-Fore more information on the frontend, goto line 94 and backend goto line 140
+Fore more information on the frontend, goto line 96 and backend goto line 142
 
 ------------------------------------------------------------------------------------------------------
 
@@ -84,7 +84,10 @@ or on Docker Desktop start it manually
 ---------------------------------------------------------------------------------------------------------------------------
 
 At last, i created a CI/CD Pipeline with Github Actions. I created a test case for the backend that i test in the pipeline,
-in Taxapp/tests.py . Except for testing, this pipeline checks the code from the repository and sets the python version and Virtual Enviroment (venv). In the deployment aspect, it logs into my Docker Hub (i added my credentials as a secret in my repository in GitHub from the add a secret section), builds and pushes the backend and frontend Docker Images and deployes the app with the file docker-compose.prod.yml (production file, i also left the development one (compose-docker.yaml) for future developments).
+in Taxapp/tests.py . Except for testing, this pipeline checks the code from the repository and sets the python version and Virtual Enviroment (venv). 
+In the deployment aspect, it logs into my Docker Hub (i added my credentials as a secret in my repository in GitHub from the add a secret section), 
+builds and pushes the backend and frontend Docker Images and deployes the app with the file docker-compose.prod.yml 
+(production file, i also left the development one (compose-docker.yaml) for future developments).
 
 Make sure to put the file( mine is ci-cd.yml) in the path .github\workflows\ or else the GitHub won't recognise the file 
 
@@ -138,20 +141,22 @@ the files i dont mention are autocreated files from the framework
 
 Backend explanations:
 
-in the Backend file, I created 2 more files (with the instructions above), backend and Taxapp
+in the Backend, I created 2 folders (with the instructions above at the start), backend and Taxapp
 
-in the backend file(project), I only made changes to 
+in the backend folder(project), I only made changes to 
 
     -settings.py: I added specific settings for the project to run (made a comment beside each line i added)
     -urls.py: defines the URL path and routes HTTP requests to APIs or views
 
-in the Taxapp file, I created all of our APIs. The fisrt 2 files i created them manually
+in the Taxapp folder, I created all of our APIs. The fisrt 2 files i created them manually
 
     -serializers.py: it converts models data to JSON format for API responses and validations
     -urls.py: defines the URL path and routes HTTP requests to APIs or views (only for the Taxapp, i integrate 
                 it in the urls.py file above)
     -views.py: contains the logic for handling HTTP requests (API structure and functions)
     -tests.py: contains a test i created for the validation of the OpenAI API Key
+
+    -AiAgent.py: handles the setup and the response from OpenAI ChatGPT 
 
 The rest of the files that exists in the backend are created automatically and i did not change them at all.
 
