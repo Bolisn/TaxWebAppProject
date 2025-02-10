@@ -6,7 +6,7 @@ specially created AI Agent. The styles and colors are inspired by Apple's Calcul
 a minimal structure. 
 
 Below i list the steps i followed to create this App. 
-Fore more information on the frontend, goto line 96 and backend goto line 142
+Fore more information on the frontend, goto line 99 and backend goto line 144
 
 ------------------------------------------------------------------------------------------------------
 
@@ -15,14 +15,14 @@ Inside the TaxWebAppProject file, i followed the steps below to activate the env
 and install the required libraries (you should also in order to activate it)
 
 open a new terminal
-npm create vite@latest frontend -- --template react
+ - npm create vite@latest frontend -- --template react
 Select a framework >> React
 Select a variant >> JavaScript
 
-cd frontend
-npm install 
-npm install axios, react-router-dom, jwt-decode
-npm run dev 
+ - cd frontend
+ - npm install 
+ - npm install axios, react-router-dom, jwt-decode
+ - npm run dev 
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -31,65 +31,68 @@ Inside the TaxWebAppProject file, I followed the steps below to activate the env
 start the server
 
 open a new terminal
-python -m venv env
-env/Scripts/Activate
-(create a file requirements.txt first and add the libraries you need, in order to install them all)
-pip -r install requirements.txt 
-django-admin startproject backend
-cd backend
-python manage.py startapp Taxapp
-python manage.py makemigrations
-python manage.py migrate
-python manage.py runserver
+ - python -m venv env 
+ - env/Scripts/Activate
+ - pip -r install requirements.txt  (create a file requirements.txt first and add the libraries you need, in order to install them all)
+ - django-admin startproject backend
+ - cd backend
+ - python manage.py startapp Taxapp
+ - python manage.py makemigrations
+ - python manage.py migrate
+ - python manage.py runserver
 
 ---------------------------------------------------------------------------------------------------------------
 
-Frontend-Backend integration
+Frontend-Backend integration 
+
 in order to run the frontend and backend at this stage of the project, i have to split the terminal
 and manually start each server, and check the logs of each one seperatly in order to debug and fix the errors
-Set correctly the api.js (axios instance) 
-set the VITE_API_URL in the .env of the frontend with the url of the Backend server 
-make sure the path you post from your Frontend exists in the Backend 
+ - Set correctly the api.js (axios instance) 
+ - set the VITE_API_URL in a new .env in the frontend with the url of the Backend server 
+ - make sure the path you post from your Frontend exists in the Backend 
 first i start with the authorization, with the access tokens and refresh tokens
 then i set the post methods from Frontend to Backend
 
 -----------------------------------------------------------------------------------------------------------------
 
 For the OpenAI API Key, and the integration of an AI Model in one API i followed these steps:
-First integrate the OpenAI API Key in the system (i created a new .env file and stored it there for safety) 
+
+- First integrate the OpenAI API Key in the system (i created a new .env file and stored it there for safety) 
 and using dotenv i define it in the system file
-Then i created Taxapp/AiAgent.py and in there i imported the key, created the prompt and define the AI Model
+- Then i created Taxapp/AiAgent.py and in there i imported the key, created the prompt and define the AI Model
 that i will use. 
-Then i import this in my views.py in order to "create" the API and route it for post and get requests 
-Finally, i created a AiAgent.jsx component in the frontend, to handle the post and get requests in the frontend (integration)
+- Then i import this in my views.py in order to "create" the API and route it for post and get requests 
+- Finally, i created a AiAgent.jsx component in the frontend, to handle the post and get requests in the frontend (integration)
 
 
 ------------------------------------------------------------------------------------------------------------
 
-To upload my project to Docker, i created 2 Dockerfiles (one for the backend and one for the frontend),
-In each one i defined the requirements to run the selected framework, the ports and the commands.
-Then i created a docker-compose.yaml file in the root of the TaxWebAppProject, to define, configure, and manage the containers as part of a single application.
-Since i decided to work with the sqlite3 database (integrated by default to django) there is no need to connect a new 
+To upload my project to Docker, i created 2 Dockerfiles (one for the backend and one for the frontend)
+
+- In each one i defined the requirements to run the selected framework, the ports and the commands.
+- Then i created a docker-compose.yaml file in the root of the TaxWebAppProject, to define, configure, and manage the containers as part of a single application.
+- Since i decided to work with the sqlite3 database (integrated by default to django) there is no need to connect a new 
 database , i just mount it to the docker-compose.yaml. Also, i mounted the code from frontend and backend in order to 
 hot-reload any changes i need to make in development. 
 
 NOTE: It is not optimal (and useful) to integrate and sent the database in this way. 
 
 To run the application now, i used the commands:
-docker-compose build
-docker-compose up
+- docker-compose build
+- docker-compose up
 
 or on Docker Desktop start it manually 
 
 ---------------------------------------------------------------------------------------------------------------------------
 
-At last, i created a CI/CD Pipeline with Github Actions. I created a test case for the backend that i test in the pipeline,
-in Taxapp/tests.py . Except for testing, this pipeline checks the code from the repository and sets the python version and Virtual Enviroment (venv). 
+At last, i created a CI/CD Pipeline with Github Actions.
+
+- I created a test case for the backend that i test in the pipeline, in Taxapp/tests.py . Except for testing, this pipeline checks the code from the repository and sets the python version and Virtual Enviroment (venv). 
 In the deployment aspect, it logs into my Docker Hub (i added my credentials as a secret in my repository in GitHub from the add a secret section), 
 builds and pushes the backend and frontend Docker Images and deployes the app with the file docker-compose.prod.yml 
 (production file, i also left the development one (compose-docker.yaml) for future developments).
 
-Make sure to put the file( mine is ci-cd.yml) in the path .github\workflows\ or else the GitHub won't recognise the file 
+- Make sure to put the file( mine is ci-cd.yml) in the path .github\workflows\ or else the GitHub won't recognise the file 
 
 -------------------------------------------------------------------------------------------------------------------------
 
@@ -163,13 +166,13 @@ The rest of the files that exists in the backend are created automatically and i
 in the requirements.txt: i add the libraries and frameworks that i will need in order to install them together
                          and also for organization reasons
 
-asgiref: Provides asynchronous server gateway interface (ASGI) utilities for Django to support asynchronous communication.
-Django: A high-level Python web framework for building web applications efficiently.
-django-cors-headers: Middleware to handle Cross-Origin Resource Sharing (CORS) in Django projects.
-djangorestframework: A toolkit for building robust and flexible REST APIs in Django.
-djangorestframework-simplejwt: Provides JSON Web Token (JWT) authentication support for Django REST Framework.
-PyJWT: A library to encode, decode, and verify JSON Web Tokens (JWT).
-pytz: Handles timezone definitions and conversions for Python projects.
-sqlparse: A library to parse, format, and manipulate SQL queries.
-python-dotenv: Reads and loads environment variables from .env files into the application.
-openai: A library to interact with OpenAI's APIs, enabling integration with AI models like GPT.
+- asgiref: Provides asynchronous server gateway interface (ASGI) utilities for Django to support asynchronous communication.
+- Django: A high-level Python web framework for building web applications efficiently.
+- django-cors-headers: Middleware to handle Cross-Origin Resource Sharing (CORS) in Django projects.
+- djangorestframework: A toolkit for building robust and flexible REST APIs in Django.
+- djangorestframework-simplejwt: Provides JSON Web Token (JWT) authentication support for Django REST Framework.
+- PyJWT: A library to encode, decode, and verify JSON Web Tokens (JWT).
+- pytz: Handles timezone definitions and conversions for Python projects.
+- sqlparse: A library to parse, format, and manipulate SQL queries.
+- python-dotenv: Reads and loads environment variables from .env files into the application.
+- openai: A library to interact with OpenAI's APIs, enabling integration with AI models like GPT.
